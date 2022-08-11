@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="product-web-services" />
+        <module name="spring-gateway-server" />
+        <module name="order-web-services" />
+        <module name="spring-oauth-server" />
+        <module name="spring-discovery-server" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="order-web-services" target="8" />
+      <module name="product-web-services" target="8" />
+      <module name="spring-discovery-server" target="8" />
+      <module name="spring-gateway-server" target="8" />
+      <module name="spring-oauth-server" target="8" />
+      <module name="spring-security-with-zuul-api-gateway" target="8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="order-web-services" options="-parameters" />
+      <module name="product-web-services" options="-parameters" />
+      <module name="spring-discovery-server" options="-parameters" />
+      <module name="spring-gateway-server" options="-parameters" />
+      <module name="spring-oauth-server" options="-parameters" />
+    </option>
+  </component>
+</project>

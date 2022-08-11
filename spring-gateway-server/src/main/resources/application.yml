@@ -12,15 +12,18 @@ hystrix:
         isolation:
           thread:
             timeoutInMilliseconds: 130000
-#eureka:
-#  instance:
-#    hostname: localhost
-#    port: 8761
-#  client:
-#    serviceUrl:
-#      defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
-#    instance:
-#      preferIpAddress: true
+
+eureka:
+  instance:
+    hostname: localhost
+    port: 8761
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ipAddress}:${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
+    instance:
+      preferIpAddress: true
 
 
 zuul:
@@ -33,14 +36,20 @@ zuul:
       sensitiveHeaders:
       path: /oauth/**
       stripPrefix: false
-      serviceId: spring-oauth-server   
+      serviceId: spring-oauth-server
     productwebservice:
       sensitiveHeaders:
       path: /products/**
       stripPrefix: false
-      serviceId: product-web-services
+      service-id: product-web-services
     orderwebservice:
       sensitiveHeaders:
       path: /orders/**
       stripPrefix: false
-      serviceId: order-web-services
+      service-id: order-web-services
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

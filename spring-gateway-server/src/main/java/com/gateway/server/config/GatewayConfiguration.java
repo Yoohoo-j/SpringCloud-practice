@@ -12,7 +12,7 @@ import org.springframework.security.oauth2.provider.token.RemoteTokenServices;
 public class GatewayConfiguration extends ResourceServerConfigurerAdapter
 {
 	@Override
-    public void configure(HttpSecurity http) throws Exception 
+    public void configure(HttpSecurity http) throws Exception
 	{
         http.csrf().disable()
             .authorizeRequests()
@@ -20,11 +20,11 @@ public class GatewayConfiguration extends ResourceServerConfigurerAdapter
             .antMatchers("/**")
             .authenticated();
     }
-	
+
     @Bean
     public RemoteTokenServices remoteTokenService() {
         RemoteTokenServices tokenService = new RemoteTokenServices();
-        tokenService.setCheckTokenEndpointUrl("http://localhost:9090/oauth/check_token");
+        tokenService.setCheckTokenEndpointUrl("http://192.168.86.9:9090/oauth/check_token");
         tokenService.setClientId("client");
         tokenService.setClientSecret("secret");
         return tokenService;
